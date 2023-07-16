@@ -31,7 +31,7 @@ import { encrypt, decrypt } from "crypto-pi";
 
 ## How it works
 
-The module knows the first million chars of π (pi) from a local file called `pi.txt`, which should contain the digits of π (pi). The functions `crypt` and `decrypt` use this information to perform the encryption and decryption processes.
+The module knows the first million chars of π (pi) from a local file called `pi.txt`, which should contain the digits of π (pi). The functions `encrypt` and `decrypt` use this information to perform the encryption and decryption processes.
 
 ### Encryption process
 
