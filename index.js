@@ -28,14 +28,22 @@ function until(cond) {
 
 async function encrypt(string) {
 	await until((_) => ready == true);
+	const charMap = {};
 	let result = "";
 	let endResult = "";
 	let indexResult = "";
 	for (let char of string) {
-		let index = getIndexNumber(PIString, charCode(char).toString());
+		//map
+		let index = charMap[char]
+			? charMap[char]
+			: getIndexNumber(PIString, charCode(char).toString());
+
 		result += index.toString();
 		endResult += `${charCode(char)}`.length;
 		indexResult += `${index}`.length;
+
+		//map
+		if (!charMap[char]) charMap[char] = index.toString();
 	}
 	return result + "." + endResult + "." + indexResult;
 }
@@ -46,6 +54,7 @@ async function decrypt(string) {
 	let lengths = string.split(".")[1];
 	let searchLengths = string.split(".")[2];
 	let indexCumulative = 0;
+	const charMap = {};
 	let result = "";
 	for (let c = 0; c < lengths.split("").length; c++) {
 		const codeLength = lengths[c];
@@ -53,7 +62,9 @@ async function decrypt(string) {
 		let num = numbers.substr(indexCumulative, searchLength);
 		await until((_) => ready == true);
 		indexCumulative += parseInt(searchLength);
+
 		let char = await getNumber(PIString, num, codeLength);
+
 		result += String.fromCharCode(char);
 	}
 
