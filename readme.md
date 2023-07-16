@@ -17,11 +17,11 @@ npm install crypto-pi
 Import the module and use the provided functions to encrypt and decrypt your text.
 
 ```javascript
-import { crypt, decrypt } from "crypto-pi";
+import { encrypt, decrypt } from "crypto-pi";
 
 (async () => {
 	const text = "Hello, world!";
-	const encryptedText = await crypt(text);
+	const encryptedText = await encrypt(text);
 	console.log("Encrypted:", encryptedText);
 
 	let result = await decrypt(encryptedText); // This will log "Hello, world!" to the console
