@@ -97,17 +97,3 @@ function getIndexNumber(txt, search) {
 
 export { encrypt, decrypt };
 export default encrypt;
-(async () => {
-	let start = performance.now();
-
-	for (let index = 0; index < 10000; index++) {
-		let tryf = await encrypt(
-			"To use crypto-pi in your Node.js project, you can install it using npm:"
-		);
-		let dee = await decrypt(tryf);
-	}
-	let end = performance.now();
-
-	let time = end - start;
-	console.log("e", time);
-})();
