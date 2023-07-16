@@ -1,6 +1,6 @@
 {
 	"name": "crypto-pi",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "crypto-pi is an npm module that provides a novel text encryption and decryption method by mapping character codes to their positions within the digits of π (pi). Encrypt your text with π-based indexing and decrypt it back to its original form. A fun and creative approach to text encryption!",
 	"license": "MIT",
 	"repository": "https://github.com/ahgsql/crypto-pi",
