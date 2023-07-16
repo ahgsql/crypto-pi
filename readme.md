@@ -1,65 +1,62 @@
-# node-module-boilerplate
+# crypto-pi
 
-> Boilerplate to kickstart creating a Node.js module
+[![npm version](https://badge.fury.io/js/crypto-pi.svg)](https://badge.fury.io/js/crypto-pi)
 
-This is what I use for [my own modules](https://www.npmjs.com/~sindresorhus).
+crypto-pi is an npm module that provides text encryption and decryption based on the positions of character codes within the mathematical constant π (pi). It uses the char codes index inside the π number to crypt the text and then can be decrypted back to its original form.
 
-Also check out [`node-cli-boilerplate`](https://github.com/sindresorhus/node-cli-boilerplate).
+## Installation
 
-## Getting started
+To use crypto-pi in your Node.js project, you can install it using npm:
 
-**Click the "Use this template" button.**
-
-Alternatively, create a new directory and then run:
-
-```sh
-curl -fsSL https://github.com/sindresorhus/node-module-boilerplate/archive/main.tar.gz | tar -xz --strip-components=1
-```
-
-There's also a [Yeoman generator](https://github.com/sindresorhus/generator-nm).
-
----
-
-**Remove everything from here and above**
-
----
-
-# unicorn-fun
-
-> My awesome module
-
-## Install
-
-```sh
-npm install unicorn-fun
+```bash
+npm install crypto-pi
 ```
 
 ## Usage
 
-```js
-import unicornFun from 'unicorn-fun';
+Import the module and use the provided functions to encrypt and decrypt your text.
 
-unicornFun('unicorns');
-//=> 'unicorns & rainbows'
+```javascript
+import { crypt, decrypt } from "crypto-pi";
+
+(async () => {
+	const text = "Hello, world!";
+	const encryptedText = await crypt(text);
+	console.log("Encrypted:", encryptedText);
+
+	let result = await decrypt(encryptedText); // This will log "Hello, world!" to the console
+	console.log(result);
+})();
 ```
 
-## API
+## How it works
 
-### unicornFun(input, options?)
+The module knows the first million chars of π (pi) from a local file called `pi.txt`, which should contain the digits of π (pi). The functions `crypt` and `decrypt` use this information to perform the encryption and decryption processes.
 
-#### input
+### Encryption process
 
-Type: `string`
+1. For each character in the input text, the module finds the index of its char code within the π (pi) digits.
+2. It concatenates the found indexes into a single string, separating each index with a dot (`.`).
+3. It also appends two more dot-separated strings to the result string. The first string contains the length of each char code, and the second string contains the length of each index string.
 
-Lorem ipsum.
+### Decryption process
 
-#### options
+1. The decryption process begins by splitting the input string into three parts using the dots (`.`) as separators.
+2. The first part contains the concatenated indexes of the char codes within the π (pi) digits.
+3. The second part contains the length of each char code in the original text.
+4. The third part contains the length of each index in the first part.
+5. The module then iterates over the lengths in the second part to extract each char code index and its length from the first part.
+6. It looks up the corresponding char code from the π (pi) digits using the extracted index and length.
+7. The decrypted char codes are then converted back to characters, resulting in the original text.
 
-Type: `object`
+## Limitations
 
-##### postfix
+Please note that this encryption method is not intended for strong security purposes. It is primarily a fun and creative approach to encrypting text based on the position of character codes in the π (pi) number.
 
-Type: `string`\
-Default: `'rainbows'`
+## Contributing
 
-Lorem ipsum.
+Contributions to the crypto-pi module are welcome! If you find any issues or want to add new features, please feel free to create a pull request.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

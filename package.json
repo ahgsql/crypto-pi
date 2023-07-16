@@ -1,13 +1,12 @@
 {
-	"name": "unicorn-fun",
-	"version": "0.0.0",
-	"description": "My awesome module",
+	"name": "crypto-pi",
+	"version": "0.0.1",
+	"description": "crypto-pi is an npm module that provides a novel text encryption and decryption method by mapping character codes to their positions within the digits of π (pi). Encrypt your text with π-based indexing and decrypt it back to its original form. A fun and creative approach to text encryption!",
 	"license": "MIT",
-	"repository": "YOUR-GITHUB-USERNAME/unicorn-fun",
+	"repository": "https://github.com/ahgsql/crypto-pi",
 	"author": {
-		"name": "YOUR NAME",
-		"email": "YOUR EMAIL",
-		"url": "YOUR WEBSITE"
+		"name": "Ali Haydar GÜLEÇ",
+		"email": "alihaydargulec@gmail.com"
 	},
 	"type": "module",
 	"exports": "./index.js",
@@ -15,18 +14,16 @@
 		"node": ">=16"
 	},
 	"scripts": {
-		"test": "xo && ava"
+		"test": "ava"
 	},
 	"files": [
 		"index.js"
 	],
 	"keywords": [
-		"unicorn",
-		"fun"
+		"pi",
+		"crypto"
 	],
-	"dependencies": {},
 	"devDependencies": {
-		"ava": "^5.3.0",
-		"xo": "^0.54.2"
+		"ava": "^5.3.0"
 	}
 }
