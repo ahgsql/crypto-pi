@@ -1,9 +1,11 @@
 import fs from "node:fs";
+import { fileURLToPath } from "url";
+import path, { dirname } from "node:path";
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
 let PIString = "";
-
 let ready = false;
-fs.readFile("pi.txt", "utf8", (error, data) => {
+fs.readFile(path.resolve(__dirname, "pi.txt"), "utf8", (error, data) => {
 	if (error) {
 		console.error(error);
 		return;
